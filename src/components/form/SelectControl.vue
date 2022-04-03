@@ -8,6 +8,7 @@ const props = defineProps({
       type: String,
       required: true
    },
+   label: { type: String },
    options: {
       type: Object,
       required: true
@@ -29,10 +30,10 @@ const onSelect = e => {
 
 <template>
    <div class="row align-items-center">
-      <div class="col-4">
-         <label class="label">Area:</label>
+      <div v-if="props.label" class="col-4">
+         <label class="label">{{ label }}</label>
       </div>
-      <div class="col-8">
+      <div :class="`${props.label ? 'col-8' : 'col-12'}`">
          <select class="form-select" id="select_input" @change="onSelect">
             <option v-for="(opt, i) in props.options" :key="i" :value="opt[props.trackBy]" :selected="opt.value === modelValue">
                {{ opt[props.optionLabel] }}
