@@ -1,13 +1,12 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import DefaultLayout from './views/layouts/DefaultLayout.vue';
 </script>
 
 <template>
-   <header>
-      Header
-   </header>
-
-   <RouterView />
+   <DefaultLayout>
+      <RouterView />
+   </DefaultLayout>
 </template>
 
 <style>
