@@ -1,5 +1,10 @@
 <script setup>
+import { reactive } from 'vue'
 import SelectControl from '@/components/form/SelectControl.vue'
+
+const form = reactive({
+   area: 'PKW'
+})
 
 const options = [
    { label: 'PKW', value: 'PKW' },
@@ -15,7 +20,7 @@ const options = [
 
       <div class="row">
          <div class="col-md-5">
-            <SelectControl :options="options" trackBy="value" />
+            <SelectControl v-model="form.area" :options="options" trackBy="value" />
          </div>
          <div class="col-md-4 offset-md-2 ">.col-md-4 .offset-md-4</div>
       </div>

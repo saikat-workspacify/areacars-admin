@@ -1,7 +1,13 @@
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
+
+const emit = defineEmits('update:modelValue')
 
 const props = defineProps({
+   modelValue: {
+      type: String,
+      required: true
+   },
    options: {
       type: Object,
       required: true
@@ -15,6 +21,10 @@ const props = defineProps({
       default: 'label'
    }
 })
+
+const onSelect = e => {
+   emit('update:modelValue', e.target.value)
+}
 </script>
 
 <template>
@@ -23,8 +33,10 @@ const props = defineProps({
          <label class="label">Area:</label>
       </div>
       <div class="col-8">
-         <select class="form-select" id="select_input">
-            <option v-for="(opt, i) in props.options" :key="i" :value="opt[props.trackBy]">{{ opt[props.optionLabel] }}</option>
+         <select class="form-select" id="select_input" @change="onSelect">
+            <option v-for="(opt, i) in props.options" :key="i" :value="opt[props.trackBy]" :selected="opt.value === modelValue">
+               {{ opt[props.optionLabel] }}
+            </option>
          </select>
 
       </div>
