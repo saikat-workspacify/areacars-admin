@@ -11,5 +11,5 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style>
-@import "@/assets/base.css";
+@import "@/assets/styles/base.scss";
 </style>
