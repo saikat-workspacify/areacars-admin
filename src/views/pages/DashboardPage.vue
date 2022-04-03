@@ -2,9 +2,9 @@
 </script>
 
 <template>
-   <main>
-      <h4>Home page</h4>
-   </main>
+   <div class="page-content">
+      <h4>Dashboard page</h4>
+   </div>
 </template>
 
 <style lang="scss">

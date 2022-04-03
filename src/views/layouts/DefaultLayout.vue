@@ -6,7 +6,7 @@ import LeftSidebar from './LeftSidebar.vue'
    <div id="default_layout">
       <LeftSidebar />
 
-      <main class="bg-light main-content">
+      <main class="main-content">
          <slot />
       </main>
    </div>
@@ -33,9 +33,13 @@ import LeftSidebar from './LeftSidebar.vue'
       flex: 1;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 25px;
+      padding: 20px;
+      background-color: #fff;
    }
+}
+.page-content {
+   padding: 20px;
+   border-radius: 5px;
+   border: 1px solid #eee;
 }
 </style>
