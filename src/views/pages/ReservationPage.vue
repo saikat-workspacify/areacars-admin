@@ -2,12 +2,14 @@
 import { reactive } from 'vue'
 import SelectControl from '@/components/form/SelectControl.vue'
 import InputControl from '@/components/form/InputControl.vue'
+import ImageUploader from '@/components/form/ImageUploader.vue'
 
 const form = reactive({
    area: 'PKW',
    category: 'Couples',
    internalNumber: '',
    keyNumber: '',
+   images: null
 })
 
 const areas = [
@@ -26,17 +28,23 @@ const categories = [
 
 <template>
    <div class="page-content">
-      <h6 class="mb-4">Upload reservation</h6>
+      <h5 class="mb-4">Upload reservation</h5>
 
       <div class="row">
          <div class="col-md-5">
+            <p class="fw-medium mb-4">General information</p>
+
             <SelectControl v-model="form.area" :options="areas" label="Area:" trackBy="value" />
             <SelectControl v-model="form.category" :options="categories" label="Category:" trackBy="value" class="mt-3" />
 
             <InputControl v-model="form.internalNumber" label="Internal number:" class="mt-3" />
             <InputControl v-model="form.keyNumber" label="Key number:" class="mt-3" />
          </div>
-         <div class="col-md-4 offset-md-2 ">.col-md-4 .offset-md-4</div>
+
+         <div class="col-md-4 offset-md-2 ">
+            <ImageUploader v-model="form.images" label="Upload files" />
+         </div>
+
       </div>
    </div>
 </template>
