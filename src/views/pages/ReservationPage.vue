@@ -1,9 +1,13 @@
 <script setup>
 import { reactive } from 'vue'
 import SelectControl from '@/components/form/SelectControl.vue'
+import InputControl from '@/components/form/InputControl.vue'
 
 const form = reactive({
-   area: 'PKW'
+   area: 'PKW',
+   category: 'Couples',
+   internalNumber: '',
+   keyNumber: '',
 })
 
 const areas = [
@@ -27,7 +31,10 @@ const categories = [
       <div class="row">
          <div class="col-md-5">
             <SelectControl v-model="form.area" :options="areas" label="Area:" trackBy="value" />
-            <SelectControl v-model="form.area" :options="categories" label="Category:" trackBy="value" class="mt-3" />
+            <SelectControl v-model="form.category" :options="categories" label="Category:" trackBy="value" class="mt-3" />
+
+            <InputControl v-model="form.internalNumber" label="Internal number:" class="mt-3" />
+            <InputControl v-model="form.keyNumber" label="Key number:" class="mt-3" />
          </div>
          <div class="col-md-4 offset-md-2 ">.col-md-4 .offset-md-4</div>
       </div>
