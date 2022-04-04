@@ -5,6 +5,7 @@ import SelectControl from '@/components/form/SelectControl.vue'
 import InputControl from '@/components/form/InputControl.vue'
 import ImageUploader from '@/components/form/ImageUploader.vue'
 import CalenderControl from '@/components/form/CalenderControl.vue'
+import CheckBox from '@/components/form/CheckBox.vue'
 
 const form = reactive({
    area: 'PKW',
@@ -12,7 +13,7 @@ const form = reactive({
    internalNumber: '',
    keyNumber: '',
    images: null,
-   purchaseDate: moment(new Date()),
+   purchaseDate: moment(new Date()).format('DD MMM YYYY'),
    vinNo: '',
    vehicleRegNo: '',
    location: '',
@@ -20,6 +21,8 @@ const form = reactive({
    customerPrice: '',
    purchasePrice: '',
    sellingPrice: '',
+   vatDeductible: true,
+   negotiationPrice: false
 })
 
 const areas = [
@@ -72,18 +75,8 @@ const locations = [
 
             <div class="row mt-4">
                <div class="col-md-8 offset-md-4">
-                  <div class="form-check">
-                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                     <label class="form-check-label ms-3 label" for="flexCheckDefault">
-                        VAT deductible
-                     </label>
-                  </div>
-                  <div class="form-check mt-2">
-                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                     <label class="form-check-label ms-3 label" for="flexCheckDefault">
-                        Negotiation price
-                     </label>
-                  </div>
+                  <CheckBox v-model="form.vatDeductible" label="VAT deductible" />
+                  <CheckBox v-model="form.negotiationPrice" label="Negotiation price" />
                </div>
             </div>
          </div>
