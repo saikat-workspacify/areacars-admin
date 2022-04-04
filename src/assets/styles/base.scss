@@ -1,3 +1,11 @@
+@import './scss/variables';
+@import './scss/mixins';
+
+@import "./scss/overrides";
+@import "./scss/utils";
+
+@import url(#{$font-url});
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
    --vt-c-white: #ffffff;
@@ -36,6 +44,21 @@
    --section-gap: 160px;
 }
 
+:root {
+   --font-primary: #{$primary-font};
+   --color-primary: #{$primary-color};
+   --color-dark: #{$dark-color};
+   --color-heading: #{$dark-color};
+   --color-text: #{$text-color};
+   --color-light-grey: #{$light-grey-color};
+   --color-light-grey-2: #{$light-grey-color-2};
+   --color-grey: #{$grey-color};
+   --color-error: #{$error-color};
+   --color-success: #{$success-color};
+   --color-white: #{$white-color};
+   --color-blue: #{$blue-color};
+}
+
 @media (prefers-color-scheme: dark) {
    :root {
       --color-background: var(--vt-c-black);
@@ -59,15 +82,23 @@
    font-weight: normal;
 }
 
+html {
+   scroll-behavior: smooth;
+   font-size: 16px;
+
+   @include responsive-max('sm') {
+      font-size: 15px;
+   }
+}
+
 body {
    min-height: 100vh;
    color: var(--color-text);
    background: var(--color-background);
-   transition: color 0.5s, background-color 0.5s;
+   transition: color 0.3s, background-color 0.3s;
    line-height: 1.6;
-   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-      Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-   font-size: 15px;
+   font-family: var(--font-primary);
+   overflow-x: hidden;
    text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
@@ -86,55 +117,4 @@ img {
 
 hr {
    background-color: #a3a3a3;
-}
-
-.fw-medium {
-   font-weight: 600;
-}
-
-// Bootstrap override
-.form-control:focus,
-.form-select:focus,
-.form-check-input {
-   box-shadow: unset !important;
-}
-
-.form-control,
-.form-select {
-   border-color: #ddd;
-   color: #333;
-}
-
-.form-check-input {
-   border-width: 2px;
-   width: 1.2em;
-   height: 1.2em;
-}
-
-.form-check-input[type=checkbox] {
-   border-radius: 0.2em;
-}
-
-// Label
-.label {
-   color: #666;
-   font-weight: 600;
-}
-
-// Custom Scrollbar
-.custom-scrollbar {
-
-   // Webkit
-   &::-webkit-scrollbar {
-      width: 6px;
-   }
-
-   &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px transparent;
-   }
-
-   &::-webkit-scrollbar-thumb {
-      background-color: #999;
-      border-radius: 5px;
-   }
 }

@@ -1,0 +1,36 @@
+// Bootstrap override
+.form-control:focus,
+.form-select:focus,
+.form-check-input {
+   box-shadow: unset !important;
+}
+
+.form-control,
+.form-select {
+   border-color: #ddd;
+   color: #333;
+}
+
+.form-check-input {
+   border-width: 2px;
+   width: 1.2em;
+   height: 1.2em;
+}
+
+.form-check-input[type=checkbox] {
+   border-radius: 0.2em;
+}
+
+.text-primary {
+   color: $primary-color;
+}
+
+.bg-primary,
+.btn-primary {
+   background-color: $primary-color;
+}
+
+.bg-grey,
+.btn-light {
+   background-color: $grey-color;
+}

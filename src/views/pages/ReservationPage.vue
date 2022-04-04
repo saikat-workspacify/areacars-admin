@@ -566,9 +566,9 @@ const colors = [
          </div>
 
          <div class="mt-4 mb-2 d-flex justify-content-end align-items-center">
-            <button type="button" class="btn btn-sm bg-transparent px-5">Save</button>
-            <button type="button" class="btn btn-sm btn-light mx-3 px-5">Cancel</button>
-            <button type="button" class="btn btn-sm btn-primary px-5">Upload</button>
+            <button type="button" class="btn btn-sm bg-transparent px-5 py-2">Save</button>
+            <button type="button" class="btn btn-sm btn-light mx-3 px-5 py-2">Cancel</button>
+            <button type="button" class="btn btn-sm btn-primary px-5 py-2">Upload</button>
          </div>
       </div>
    </default-layout>
