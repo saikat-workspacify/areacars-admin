@@ -25,7 +25,7 @@ const onChange = e => {
 <template>
    <div class="form-check">
       <input :checked="modelValue" @input="onChange" type="checkbox" :id="generateId" class="form-check-input">
-      <label class="form-check-label ms-3 label" :for="generateId">
+      <label class="form-check-label ms-3 label" :for="generateId" style="font-size: 14px;">
          {{ props.label }}
       </label>
    </div>

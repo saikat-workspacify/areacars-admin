@@ -14,6 +14,13 @@ const form = reactive({
    keyNumber: '',
    images: null,
    purchaseDate: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
+   modelYear: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
+   firstRegistration: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
+   yearOfManufacture: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
+   generalInspectionUnit: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
+   emissionInspectionUntil: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
+   productionDate: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
+   lastService: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
    vinNo: '',
    vehicleRegNo: '',
    location: '',
@@ -23,7 +30,43 @@ const form = reactive({
    sellingPrice: '',
    vatDeductible: false,
    negotiationPrice: false,
-   manufacturer: 'Audi'
+   generalInspectionNew: false,
+   emissionInspectionNew: false,
+   manufacturer: 'Audi',
+   model: '',
+   specialModel: '',
+   power: '',
+   gearBox: '',
+   transmission: '',
+   condition: '',
+   odometer: '',
+   engineCapacity: '',
+   type: '',
+   lastServiceKm: '',
+   damaged: '',
+   accidentVehicle: '',
+   stillDrivable: '',
+   hsn: '',
+   tsn: '',
+   gears: '',
+   seats: '',
+   doorts: '',
+   previousOwner: '',
+   cylinder: '',
+   fullServiceHistory: false,
+   nonSmoker: false,
+   accidentFree: false,
+   usedCarWarranty: false,
+   dekraSeal: false,
+   exportVehicle: false,
+   metallic: false,
+   exteriorColor: '',
+   interiorColor: '',
+   rimSize: '',
+   totalWeight: '',
+   emptyWeight: '',
+   interiorMaterial: '',
+   UpholsteryColor: '',
 })
 
 const areas = [
@@ -51,6 +94,25 @@ const manufacturers = [
    { label: 'Plastic', value: 'Plastic' },
    { label: 'Toyota', value: 'Toyota' },
    { label: 'Pegases', value: 'Pegases' },
+]
+
+const types = [
+   { label: 'New car', value: 'neww-car' },
+   { label: 'Plastic', value: 'Plastic' },
+   { label: 'Toyota', value: 'Toyota' },
+   { label: 'Pegases', value: 'Pegases' },
+]
+const gearBoxes = [
+   { label: 'Automatic', value: 'neww-car' },
+   { label: 'Manual', value: 'Plastic' },
+]
+const conditions = [
+   { label: 'Please choose', value: null },
+   { label: 'Manual', value: 'Plastic' },
+]
+const colors = [
+   { label: 'Black', value: 'black' },
+   { label: 'White', value: 'Plastic' },
 ]
 
 </script>
@@ -105,9 +167,86 @@ const manufacturers = [
       <div class="row">
          <div class="col-md-6">
             <SelectControl v-model="form.manufacturer" :options="manufacturers" label="Manufacturer:" trackBy="value" />
+
+            <InputControl v-model="form.model" label="Model:" class="mt-3" />
+            <InputControl v-model="form.specialModel" label="Special model:" placeholder="Max. 48 characters " class="mt-3" />
+
+            <SelectControl v-model="form.type" :options="types" label="Type" trackBy="value" class="mt-3" />
+
+            <InputControl v-model="form.engineCapacity" label="Engine capacity (cm3):" class="mt-3" />
+            <InputControl v-model="form.power" label="Power (kw):" class="mt-3" />
+
+            <SelectControl v-model="form.gearBox" :options="gearBoxes" label="Gearbox:" trackBy="value" class="mt-3" />
+            <SelectControl v-model="form.transmission" :options="gearBoxes" label="Transmission:" trackBy="value" class="mt-3" />
+            <SelectControl v-model="form.condition" :options="conditions" label="Condition:" trackBy="value" class="mt-3" />
+
+            <InputControl v-model="form.odometer" label="Odometer:" class="mt-3" />
+
+            <CalenderControl v-model="form.modelYear" label="Model year :" class="mt-3" />
+            <CalenderControl v-model="form.firstRegistration" label="First registration:" class="mt-3" />
+            <CalenderControl v-model="form.yearOfManufacture" label="Year of manufacture:" class="mt-3" />
+            <CalenderControl v-model="form.generalInspectionUnit" label="General inspection until:" class="mt-3" />
+
+            <div class="row mt-4">
+               <div class="col-md-8 offset-md-4">
+                  <CheckBox v-model="form.generalInspectionNew" label="General inspection new" />
+               </div>
+            </div>
+
+            <CalenderControl v-model="form.emissionInspectionUntil" label="Emission inspection until:" class="mt-3" />
+
+            <div class="row mt-4">
+               <div class="col-md-8 offset-md-4">
+                  <CheckBox v-model="form.emissionInspectionNew" label="Emission inspection new" />
+               </div>
+            </div>
+
+            <CalenderControl v-model="form.productionDate" label="Production date:" class="mt-3" />
+            <CalenderControl v-model="form.lastService" label="Last service:" class="mt-3" />
+
+            <InputControl v-model="form.lastServiceKm" label="Last service (km):" class="mt-3" />
+
+            <SelectControl v-model="form.damaged" :options="conditions" label="Damaged:" trackBy="value" class="mt-3" />
+            <SelectControl v-model="form.accidentVehicle" :options="conditions" label="Accident vehicle:" trackBy="value" class="mt-3" />
+            <SelectControl v-model="form.stillDrivable" :options="conditions" label="Still drivable:" trackBy="value" class="mt-3" />
          </div>
          <div class="col-md-5  offset-md-1">
-            rightside
+            <CalenderControl v-model="form.hsn" label="HSN:" />
+
+            <InputControl v-model="form.tsn" label="TSN:" class="mt-3" />
+            <InputControl v-model="form.gears" label="Gears:" class="mt-3" />
+            <InputControl v-model="form.seats" label="Seats:" class="mt-3" />
+            <InputControl v-model="form.doorts" label="Doorts:" class="mt-3" />
+            <InputControl v-model="form.previousOwner" label="Previous owner:" class="mt-3" />
+            <InputControl v-model="form.cylinder" label="Cylinder:" class="mt-3" />
+
+            <div class="row mt-4">
+               <div class="col-md-8 offset-md-4">
+                  <CheckBox v-model="form.fullServiceHistory" label="Full service history" class="mt-2" />
+                  <CheckBox v-model="form.nonSmoker" label="Non-smoker" class="mt-2" />
+                  <CheckBox v-model="form.accidentFree" label="Accident free" class="mt-2" />
+                  <CheckBox v-model="form.usedCarWarranty" label="Used car warranty" class="mt-2" />
+                  <CheckBox v-model="form.dekraSeal" label="Dekra seal" class="mt-2" />
+                  <CheckBox v-model="form.exportVehicle" label="Export vehicle" class="mt-2" />
+               </div>
+            </div>
+
+            <SelectControl v-model="form.exteriorColor" :options="colors" label="Exterior color:" trackBy="value" class="mt-4" />
+
+            <div class="row mt-4">
+               <div class="col-md-8 offset-md-4">
+                  <CheckBox v-model="form.metallic" label="Metallic" class="mt-2" />
+               </div>
+            </div>
+
+            <SelectControl v-model="form.interiorColor" :options="colors" label="Interior color:" trackBy="value" class="mt-4" />
+            <SelectControl v-model="form.rimSize" :options="conditions" label="Rim size:" trackBy="value" class="mt-4" />
+
+            <InputControl v-model="form.totalWeight" label="Total weight (kg):" class="mt-3" />
+            <InputControl v-model="form.emptyWeight" label="Empty weight (kg):" class="mt-3" />
+
+            <SelectControl v-model="form.interiorMaterial" :options="conditions" label="Interior material:" trackBy="value" class="mt-4" />
+            <SelectControl v-model="form.UpholsteryColor" :options="conditions" label="Upholstery color:" trackBy="value" class="mt-4" />
          </div>
       </div>
    </div>
