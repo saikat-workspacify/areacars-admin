@@ -3,13 +3,15 @@ import { reactive } from 'vue'
 import SelectControl from '@/components/form/SelectControl.vue'
 import InputControl from '@/components/form/InputControl.vue'
 import ImageUploader from '@/components/form/ImageUploader.vue'
+import CalenderControl from '@/components/form/CalenderControl.vue'
 
 const form = reactive({
    area: 'PKW',
    category: 'Couples',
    internalNumber: '',
    keyNumber: '',
-   images: null
+   images: null,
+   purchaseDate: new Date()
 })
 
 const areas = [
@@ -39,6 +41,8 @@ const categories = [
 
             <InputControl v-model="form.internalNumber" label="Internal number:" class="mt-3" />
             <InputControl v-model="form.keyNumber" label="Key number:" class="mt-3" />
+
+            <CalenderControl v-model="form.purchaseDate" label="Purchase date:" class="mt-3" />
          </div>
 
          <div class="col-md-4 offset-md-1 ">
