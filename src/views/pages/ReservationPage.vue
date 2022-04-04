@@ -11,7 +11,14 @@ const form = reactive({
    internalNumber: '',
    keyNumber: '',
    images: null,
-   purchaseDate: new Date()
+   purchaseDate: new Date(),
+   vinNo: '',
+   vehicleRegNo: '',
+   location: '',
+   lot: '',
+   customerPrice: '',
+   purchasePrice: '',
+   sellingPrice: '',
 })
 
 const areas = [
@@ -26,6 +33,14 @@ const categories = [
    { label: 'Toyota', value: 'Toyota' },
    { label: 'Pegases', value: 'Pegases' },
 ]
+
+const locations = [
+   { label: 'Bismarckstr.', value: 'bismarckstr' },
+   { label: 'Plastic', value: 'Plastic' },
+   { label: 'Toyota', value: 'Toyota' },
+   { label: 'Pegases', value: 'Pegases' },
+]
+
 </script>
 
 <template>
@@ -43,6 +58,33 @@ const categories = [
             <InputControl v-model="form.keyNumber" label="Key number:" class="mt-3" />
 
             <CalenderControl v-model="form.purchaseDate" label="Purchase date:" class="mt-3" />
+
+            <InputControl v-model="form.vinNo" label="VIN no.:" class="mt-3" />
+            <InputControl v-model="form.vehicleRegNo" label="Vehicle registration no.:" class="mt-3" />
+
+            <SelectControl v-model="form.location" :options="locations" label="Location:" trackBy="value" class="mt-3" />
+
+            <InputControl v-model="form.lot" label="Lot:" class="mt-3" />
+            <InputControl v-model="form.customerPrice" label="Customer price:" class="mt-3" />
+            <InputControl v-model="form.purchasePrice" label="Purchase price:" class="mt-3" />
+            <InputControl v-model="form.sellingPrice" label="Selling price:" class="mt-3" />
+
+            <div class="row mt-4">
+               <div class="col-md-8 offset-md-4">
+                  <div class="form-check">
+                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                     <label class="form-check-label ms-3 label" for="flexCheckDefault">
+                        VAT deductible
+                     </label>
+                  </div>
+                  <div class="form-check">
+                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                     <label class="form-check-label ms-3 label" for="flexCheckDefault">
+                        Negotiation price
+                     </label>
+                  </div>
+               </div>
+            </div>
          </div>
 
          <div class="col-md-4 offset-md-1 ">

@@ -46,8 +46,4 @@ const onSelect = e => {
 
 
 <style lang="scss" scoped>
-.label {
-   color: #666;
-   font-weight: 600;
-}
 </style>

@@ -6,7 +6,7 @@ import LeftSidebar from './LeftSidebar.vue'
    <div id="default_layout">
       <LeftSidebar />
 
-      <main class="main-content">
+      <main class="main-content custom-scrollbar">
          <slot />
       </main>
    </div>
@@ -35,6 +35,7 @@ import LeftSidebar from './LeftSidebar.vue'
       border-top-right-radius: 5px;
       padding: 20px;
       background-color: #fff;
+      overflow-y: scroll;
    }
 }
 .page-content {

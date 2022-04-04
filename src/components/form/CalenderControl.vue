@@ -60,9 +60,4 @@ watch(date, (val) => {
       top: 6px;
    }
 }
-
-.label {
-   color: #666;
-   font-weight: 600;
-}
 </style>
