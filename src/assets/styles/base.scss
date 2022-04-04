@@ -90,8 +90,19 @@ img {
 
 // Bootstrap override
 .form-control:focus,
-.form-select:focus {
+.form-select:focus,
+.form-check-input {
    box-shadow: unset !important;
+}
+
+.form-check-input {
+   border-width: 2px;
+   width: 1.2em;
+   height: 1.2em;
+}
+
+.form-check-input[type=checkbox] {
+   border-radius: 0.2em;
 }
 
 // Label

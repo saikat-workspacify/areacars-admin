@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
+import moment from 'moment'
 import SelectControl from '@/components/form/SelectControl.vue'
 import InputControl from '@/components/form/InputControl.vue'
 import ImageUploader from '@/components/form/ImageUploader.vue'
@@ -11,7 +12,7 @@ const form = reactive({
    internalNumber: '',
    keyNumber: '',
    images: null,
-   purchaseDate: new Date(),
+   purchaseDate: moment(new Date()),
    vinNo: '',
    vehicleRegNo: '',
    location: '',
@@ -77,7 +78,7 @@ const locations = [
                         VAT deductible
                      </label>
                   </div>
-                  <div class="form-check">
+                  <div class="form-check mt-2">
                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                      <label class="form-check-label ms-3 label" for="flexCheckDefault">
                         Negotiation price

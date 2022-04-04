@@ -31,7 +31,7 @@ export default defineComponent({
    name: "ImageUploader",
    props: {
       modelValue: {
-         type: String,
+         type: [String, null],
          required: true
       },
    },
