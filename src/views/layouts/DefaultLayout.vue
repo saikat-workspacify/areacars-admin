@@ -1,5 +1,6 @@
 <script setup>
 import LeftSidebar from './LeftSidebar.vue'
+
 </script>
 
 <template>

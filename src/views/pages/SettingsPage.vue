@@ -1,7 +1,9 @@
 <template>
-   <div>
-      <h4>Settings page</h4>
-   </div>
+   <default-layout>
+      <div>
+         <h4>Settings page</h4>
+      </div>
+   </default-layout>
 </template>
 
 <script setup>
