@@ -1,5 +1,6 @@
 <template>
    <div>
+      <!-- Upload box -->
       <div v-bind="getRootProps()">
 
          <div class="upload-wrapper">
@@ -9,26 +10,32 @@
             <button @click="onClick" class="btn btn-primary btn-sm px-4 mt-3">Choose Files</button>
             <p v-if="isDragActive" class="text-primary mt-2 fw-medium">Drop the files here ...</p>
             <p v-else class="text-primary mt-2 fw-medium">Drag & Drop Here</p>
-            <div v-if="isFocused" id="focus" class="text-primary mt-2 fw-medium">
-               focused
-            </div>
-            <!-- <div v-if="isDragReject" id="isDragReject" class="text-danger fw-medium">
-               isDragReject: {{ isDragReject }}
-            </div> -->
+         </div>
+
+      </div>
+
+      <!-- Preview row -->
+      <div class="row">
+         <div v-for="(img, i) in previewImages" :key="i" class="col-md-4 mt-4">
+            <img :src="img" alt="Preview" class="rounded">
          </div>
       </div>
    </div>
 </template>
 
 <script>
-import { defineComponent, reactive } from "vue"
+import { defineComponent, reactive, ref } from "vue"
 import { useDropzone } from "vue3-dropzone"
 import UploadCloudIcon from '@/components/icons/UploadCloudIcon.vue'
 export default defineComponent({
    name: "ImageUploader",
    props: {
-      label: String
+      modelValue: {
+         type: String,
+         required: true
+      },
    },
+   emits: ['update:modelValue'],
    components: {
       UploadCloudIcon,
    },
@@ -42,9 +49,25 @@ export default defineComponent({
          this.options.multiple = !this.options.multiple
       },
    },
-   setup() {
-      function onDrop(acceptedFiles, rejectReasons) {
-         console.log("acceptedFiles", acceptedFiles)
+   setup(props, ctx) {
+
+      const previewImages = ref([])
+      const previewFiles = files => {
+         files.forEach(file => {
+            const reader = new FileReader()
+            reader.onload = (e) => {
+               previewImages.value.push(e.target.result)
+            }
+            reader.readAsDataURL(file)
+
+         })
+      }
+
+      const onDrop = (acceptedFiles, rejectReasons) => {
+         previewFiles(acceptedFiles)
+
+         ctx.emit('update:modelValue', acceptedFiles)
+
          console.log("rejectReasons", rejectReasons)
       }
 
@@ -56,6 +79,7 @@ export default defineComponent({
 
       const { getRootProps, getInputProps, ...rest } = useDropzone(options)
       return {
+         previewImages,
          options,
          getRootProps,
          getInputProps,
@@ -83,5 +107,6 @@ export default defineComponent({
    border: 1px dashed;
    border-color: #808080;
    border-radius: 5px;
+   cursor: pointer;
 }
 </style>
