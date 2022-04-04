@@ -10,7 +10,7 @@ const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
    modelValue: {
-      type: [Object, Date, String, null],
+      type: [Object, Date, String, Number, null],
       required: true
    },
    label: { type: String }
@@ -38,7 +38,7 @@ watch(date, (val) => {
 
             <template v-slot="{ inputValue, inputEvents }">
                <div class="input-wrapper">
-                  <input class="form-control" :value="inputValue? moment(inputValue).format('DD MMM YYYY') : 'Select Date'" v-on="inputEvents" />
+                  <input class="form-control" :value="inputValue? moment(inputValue, 'DD MMM YYYY').format('DD MMM YYYY') : 'Select Date'" v-on="inputEvents" />
                   <span class="icon-wrapper">
                      <CalenderIcon />
                   </span>

@@ -95,6 +95,11 @@ img {
    box-shadow: unset !important;
 }
 
+.form-control,
+.form-select {
+   border-color: #ddd;
+}
+
 .form-check-input {
    border-width: 2px;
    width: 1.2em;

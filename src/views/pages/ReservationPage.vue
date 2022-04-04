@@ -13,7 +13,7 @@ const form = reactive({
    internalNumber: '',
    keyNumber: '',
    images: null,
-   purchaseDate: moment(new Date()).format('DD MMM YYYY'),
+   purchaseDate: moment(new Date(), 'DD MMM YYYY').format('DD MMM YYYY'),
    vinNo: '',
    vehicleRegNo: '',
    location: '',
@@ -21,8 +21,9 @@ const form = reactive({
    customerPrice: '',
    purchasePrice: '',
    sellingPrice: '',
-   vatDeductible: true,
-   negotiationPrice: false
+   vatDeductible: false,
+   negotiationPrice: false,
+   manufacturer: 'Audi'
 })
 
 const areas = [
@@ -45,9 +46,17 @@ const locations = [
    { label: 'Pegases', value: 'Pegases' },
 ]
 
+const manufacturers = [
+   { label: 'Audi.', value: 'Audi' },
+   { label: 'Plastic', value: 'Plastic' },
+   { label: 'Toyota', value: 'Toyota' },
+   { label: 'Pegases', value: 'Pegases' },
+]
+
 </script>
 
 <template>
+   <!-- Upload reservation -->
    <div class="page-content">
       <h5 class="mb-4">Upload reservation</h5>
 
@@ -86,6 +95,20 @@ const locations = [
             <ImageUploader v-model="form.images" />
          </div>
 
+      </div>
+   </div>
+
+   <!-- Vehicle information -->
+   <div class="page-content mt-4">
+      <h5 class="mb-4">Vehicle information</h5>
+
+      <div class="row">
+         <div class="col-md-6">
+            <SelectControl v-model="form.manufacturer" :options="manufacturers" label="Manufacturer:" trackBy="value" />
+         </div>
+         <div class="col-md-5  offset-md-1">
+            rightside
+         </div>
       </div>
    </div>
 </template>

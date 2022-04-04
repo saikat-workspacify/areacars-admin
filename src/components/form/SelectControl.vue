@@ -10,7 +10,7 @@ const props = defineProps({
    },
    label: { type: String },
    options: {
-      type: Object,
+      type: Array,
       required: true
    },
    trackBy: {
