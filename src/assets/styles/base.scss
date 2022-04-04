@@ -87,3 +87,9 @@ img {
 .fw-medium {
    font-weight: 600;
 }
+
+// Bootstrap override
+.form-control:focus,
+.form-select:focus {
+   box-shadow: unset !important;
+}

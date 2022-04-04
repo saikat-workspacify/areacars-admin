@@ -51,7 +51,7 @@ import LogoutIcon from '@/components/icons/LogoutIcon.vue'
 
 <style lang="scss" scoped>
 .app-logo {
-   margin-top: 22px;
+   margin-top: 33px;
 }
 .menu-items {
    flex: 1;

@@ -31,7 +31,7 @@ const categories = [
       <h5 class="mb-4">Upload reservation</h5>
 
       <div class="row">
-         <div class="col-md-5">
+         <div class="col-md-6">
             <p class="fw-medium mb-4">General information</p>
 
             <SelectControl v-model="form.area" :options="areas" label="Area:" trackBy="value" />
@@ -41,13 +41,18 @@ const categories = [
             <InputControl v-model="form.keyNumber" label="Key number:" class="mt-3" />
          </div>
 
-         <div class="col-md-4 offset-md-2 ">
-            <ImageUploader v-model="form.images" label="Upload files" />
+         <div class="col-md-4 offset-md-1 ">
+            <p class="label">Upload files</p>
+            <ImageUploader v-model="form.images" />
          </div>
 
       </div>
    </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+.label {
+   color: #666;
+   font-weight: 600;
+}
 </style>

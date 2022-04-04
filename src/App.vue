@@ -10,5 +10,4 @@ import DefaultLayout from './views/layouts/DefaultLayout.vue';
 </template>
 
 <style>
-@import "@/assets/styles/base.scss";
 </style>

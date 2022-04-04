@@ -1,7 +1,5 @@
 <template>
    <div>
-      <p v-if="label" class="label">{{ label }}</p>
-
       <div v-bind="getRootProps()">
 
          <div class="upload-wrapper">
