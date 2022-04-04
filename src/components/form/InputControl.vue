@@ -5,7 +5,7 @@ const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
    modelValue: {
-      type: String,
+      type: [String, Number],
       required: true
    },
    label: { type: String },
@@ -28,7 +28,7 @@ const onChange = e => {
       </div>
 
       <div :class="`${props.label ? 'col-8' : 'col-12'}`">
-         <input @input="onChange" :type="props.type" class="form-control" :placeholder="placeholder">
+         <input @input="onChange" :value="modelValue" :type="props.type" class="form-control" :placeholder="placeholder">
       </div>
    </div>
 </template>

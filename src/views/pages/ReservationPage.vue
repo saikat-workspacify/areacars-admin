@@ -67,6 +67,16 @@ const form = reactive({
    emptyWeight: '',
    interiorMaterial: '',
    UpholsteryColor: '',
+   pollutionClass: '',
+   environmentalLabel: '',
+   emissionClass: '',
+   energyEfficiency: '',
+   fuel: '',
+   cityFuelEfficiency: '',
+   combined: '',
+   annualTax: '0,00',
+   highwayFuelEfficiency: '',
+   CO2Emission: '',
 })
 
 const areas = [
@@ -250,11 +260,42 @@ const colors = [
          </div>
       </div>
    </div>
+
+   <!-- Emission levels -->
+   <div class="page-content mt-4">
+      <h5 class="mb-4">Emission levels</h5>
+
+      <div class="row">
+         <div class="col-md-6">
+            <SelectControl v-model="form.pollutionClass" :options="conditions" label="Pollution class:" trackBy="value" class="mt-4" />
+            <SelectControl v-model="form.environmentalLabel" :options="conditions" label="Environmental label:" trackBy="value" class="mt-4" />
+
+            <p class="text-muted fw-medium my-3" style="font-size: 14px;">Fuel consumption (l/100 km or kg/100km) and CO2 emissions (g/km) according to
+               Directive 1999/94/EC: The fuel recommended by the manufacturer; in the case of
+               bivalent vehicles, the fuel with the lower CO2 emissions.</p>
+
+            <SelectControl v-model="form.fuel" :options="conditions" label="Fuel:" trackBy="value" class="mt-4" />
+
+            <InputControl v-model="form.cityFuelEfficiency" label="City fuel efficiency:" class="mt-3" />
+            <InputControl v-model="form.combined" label="Combined:" class="mt-3" />
+            <InputControl v-model="form.annualTax" label="Annual tax:" class="mt-3" />
+         </div>
+
+         <div class="col-md-5 offset-md-1 ">
+            <SelectControl v-model="form.emissionClass" :options="conditions" label="Emission class:" trackBy="value" class="mt-4" />
+            <SelectControl v-model="form.energyEfficiency" :options="conditions" label="Energy efficiency:" trackBy="value" class="mt-4" />
+
+            <div class="empty-space"></div>
+
+            <InputControl v-model="form.highwayFuelEfficiency" label="Highway fuel efficiency:" class="mt-3" />
+            <InputControl v-model="form.CO2Emission" label="CO2 emission:" class="mt-3" />
+         </div>
+      </div>
+   </div>
 </template>
 
 <style lang="scss" scoped>
-.label {
-   color: #666;
-   font-weight: 600;
+.empty-space {
+   height: 140px;
 }
 </style>
