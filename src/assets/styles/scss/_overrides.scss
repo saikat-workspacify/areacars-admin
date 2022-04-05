@@ -1,7 +1,8 @@
 // Bootstrap override
 .form-control:focus,
 .form-select:focus,
-.form-check-input {
+.form-check-input,
+.btn:focus {
    box-shadow: unset !important;
 }
 
@@ -19,6 +20,10 @@
 
 .form-check-input[type=checkbox] {
    border-radius: 0.2em;
+}
+
+.form-check-input:checked[type=checkbox] {
+   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyLjMzMzQgMUw1LjAwMDA4IDguMzMzMzNMMS42NjY3NSA1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K);
 }
 
 .text-primary {
