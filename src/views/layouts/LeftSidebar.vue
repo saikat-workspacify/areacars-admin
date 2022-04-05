@@ -62,7 +62,7 @@ import LogoutIcon from '@/components/icons/LogoutIcon.vue'
    > li {
       margin: 10px 0;
       a {
-         padding: 15px 18px 15px 30px;
+         padding: 13px 15px 13px 29px;
          display: inline-block;
          border-top-right-radius: 5px;
          border-bottom-right-radius: 5px;

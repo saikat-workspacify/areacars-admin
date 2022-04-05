@@ -1,6 +1,6 @@
 <template>
    <default-layout>
-      <div class="p-3 mt-2">
+      <div class="py-3">
          <div class="row">
             <!-- General -->
             <div class="col-md-4 mt-4">

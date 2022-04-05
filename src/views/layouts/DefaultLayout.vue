@@ -23,7 +23,7 @@ import LeftSidebar from './LeftSidebar.vue'
    padding-top: 15px;
 
    .left-sidebar {
-      width: 85px;
+      width: 80px;
       color: #fff;
       display: flex;
       flex-direction: column;
