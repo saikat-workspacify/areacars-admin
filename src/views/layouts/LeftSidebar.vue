@@ -66,12 +66,14 @@ import LogoutIcon from '@/components/icons/LogoutIcon.vue'
          display: inline-block;
          border-top-right-radius: 5px;
          border-bottom-right-radius: 5px;
-         svg {
-            stroke: #999;
-         }
 
          &.router-link-exact-active {
             background-color: #666;
+
+            path {
+               stroke: red !important;
+               fill: green !important;
+            }
          }
       }
    }

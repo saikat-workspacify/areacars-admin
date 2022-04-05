@@ -14,6 +14,6 @@ export default [
    {
       path: '/settings',
       name: 'settings',
-      component: () => import('../views/pages/SettingsPage.vue')
+      component: () => import('../views/pages/settings/index.vue')
    }
 ]
