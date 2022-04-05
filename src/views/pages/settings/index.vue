@@ -4,7 +4,7 @@
          <div class="row">
             <!-- General -->
             <div class="col-md-4 mt-4">
-               <div class="settings-box h-100 border rounded">
+               <div @click="$router.push('/settings/general')" class="settings-box h-100 border rounded">
                   <div class="d-flex align-items-center">
                      <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 12.6665V27.6665C3 28.5506 3.35119 29.3984 3.97631 30.0235C4.60143 30.6486 5.44928 30.9998 6.33333 30.9998H29.6667C30.5507 30.9998 31.3986 30.6486 32.0237 30.0235C32.6488 29.3984 33 28.5506 33 27.6665V12.6665" stroke="#AAAAAA" stroke-width="2" />

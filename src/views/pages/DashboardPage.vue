@@ -3,7 +3,7 @@
 
 <template>
    <default-layout>
-      <div class="page-content">
+      <div class="borderd-content">
          <h4>Dashboard page</h4>
       </div>
    </default-layout>

@@ -39,7 +39,7 @@ import LeftSidebar from './LeftSidebar.vue'
       overflow-y: scroll;
    }
 }
-.page-content {
+.borderd-content {
    padding: 20px;
    border-radius: 5px;
    border: 1px solid #eee;

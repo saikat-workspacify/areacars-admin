@@ -23,11 +23,11 @@ const onChange = e => {
 
 <template>
    <div class="row align-items-center">
-      <div v-if="props.label" class="col-4">
+      <div v-if="props.label" class="col-md-4">
          <label class="label">{{ label }}</label>
       </div>
 
-      <div :class="`${props.label ? 'col-8' : 'col-12'}`">
+      <div :class="`${props.label ? 'col-md-8' : 'col-md-12'}`">
          <input @input="onChange" :value="modelValue" :type="props.type" class="form-control" :placeholder="placeholder">
       </div>
    </div>

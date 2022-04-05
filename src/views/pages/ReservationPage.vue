@@ -136,7 +136,7 @@ const colors = [
 <template>
    <default-layout>
       <!-- Upload reservation -->
-      <div class="page-content">
+      <div class="borderd-content">
          <h5 class="mb-4">Upload reservation</h5>
 
          <div class="row">
@@ -178,7 +178,7 @@ const colors = [
       </div>
 
       <!-- Vehicle information -->
-      <div class="page-content mt-4">
+      <div class="borderd-content mt-4">
          <h6 class="mb-4">Vehicle information</h6>
 
          <div class="row">
@@ -269,7 +269,7 @@ const colors = [
       </div>
 
       <!-- Emission levels -->
-      <div class="page-content mt-4">
+      <div class="borderd-content mt-4">
          <h6 class="mb-4">Emission levels</h6>
 
          <div class="row">
@@ -301,7 +301,7 @@ const colors = [
       </div>
 
       <!-- Delivery date, delivery period and country version -->
-      <div class="page-content mt-4">
+      <div class="borderd-content mt-4">
          <h6 class="mb-4">Delivery date, delivery period and country version</h6>
 
          <div class="row">
@@ -318,7 +318,7 @@ const colors = [
       </div>
 
       <!-- Equipment features -->
-      <div class="page-content mt-4">
+      <div class="borderd-content mt-4">
          <h6 class="mb-4">Equipment features</h6>
 
          <div class="row">
@@ -558,7 +558,7 @@ const colors = [
       </div>
 
       <!-- Free Text -->
-      <div class="page-content mt-4">
+      <div class="borderd-content mt-4">
          <h6>Free-text</h6>
 
          <div class="mt-4">
