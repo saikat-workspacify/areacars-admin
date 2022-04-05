@@ -3,8 +3,11 @@ import { createPinia } from 'pinia'
 
 import globalComponents from '@/plugins/globalComponents.js'
 
+import 'bootstrap/dist/js/bootstrap.bundle'
 import "bootstrap/dist/css/bootstrap.min.css"
+
 import "@/assets/styles/base.scss"
+
 
 import App from './App.vue'
 import router from './router'

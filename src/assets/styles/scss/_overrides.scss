@@ -30,7 +30,20 @@
    background-color: $primary-color;
 }
 
+.bg-danger,
+.btn-danger {
+   background-color: $error-color;
+}
+
+.btn-danger {
+   border-color: $error-color;
+}
+
 .bg-grey,
 .btn-light {
    background-color: $grey-color;
+}
+
+.btn-light {
+   border-color: $grey-color;
 }

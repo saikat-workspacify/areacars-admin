@@ -16,10 +16,30 @@
 
       <!-- Preview row -->
       <div class="row">
-         <div v-for="(img, i) in previewImages" :key="i" class="col-md-4 mt-4">
+         <div v-for="(img, i) in previewImages" :key="i" class="col-md-4 mt-4 position-relative">
             <img :src="img" alt="Preview" class="rounded">
+            <span @click="openRemoveModal(i)" class="remove-icon" data-bs-toggle="modal" data-bs-target="#preview_image_remore">&#10073;</span>
          </div>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="preview_image_remore" tabindex="-1" aria-labelledby="preview_image_remore_label" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="preview_image_remore_label">Cancel Upload?</h5>
+               </div>
+               <div class="modal-body">
+                  Are you sure want to cancel this upload?
+               </div>
+               <div class="modal-footer border-0 mt-2">
+                  <button type="button" class="btn btn-light px-5 py-2 btn-sm " data-bs-dismiss="modal">No</button>
+                  <button @click="confirmedRemove" type="button" class="btn btn-danger px-5 py-2 btn-sm" data-bs-dismiss="modal">Yes</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
    </div>
 </template>
 
@@ -31,7 +51,7 @@ export default defineComponent({
    name: "ImageUploader",
    props: {
       modelValue: {
-         type: [String, null],
+         type: [File, Array, null],
          required: true
       },
    },
@@ -44,12 +64,11 @@ export default defineComponent({
          if (this.open) {
             this.open()
          }
-      },
-      toggleMulti() {
-         this.options.multiple = !this.options.multiple
-      },
+      }
    },
    setup(props, ctx) {
+
+      const files = ref([])
 
       const previewImages = ref([])
       const previewFiles = files => {
@@ -59,13 +78,13 @@ export default defineComponent({
                previewImages.value.push(e.target.result)
             }
             reader.readAsDataURL(file)
-
          })
       }
 
       const onDrop = (acceptedFiles, rejectReasons) => {
          previewFiles(acceptedFiles)
 
+         files.value = acceptedFiles
          ctx.emit('update:modelValue', acceptedFiles)
 
          console.log("rejectReasons", rejectReasons)
@@ -77,10 +96,25 @@ export default defineComponent({
          accept: [".jpg", ".png", ".jpeg", ".svg"],
       })
 
+      // Modal
+      const activeRemoveIndex = ref()
+      const openRemoveModal = (i) => {
+         activeRemoveIndex.value = i
+      }
+      const confirmedRemove = () => {
+         previewImages.value.splice(activeRemoveIndex.value, 1)
+         files.value.splice(activeRemoveIndex.value, 1)
+
+         ctx.emit('update:modelValue', files.value)
+      }
+
+
       const { getRootProps, getInputProps, ...rest } = useDropzone(options)
       return {
          previewImages,
          options,
+         openRemoveModal,
+         confirmedRemove,
          getRootProps,
          getInputProps,
          ...rest,
@@ -102,6 +136,23 @@ export default defineComponent({
    border: 1px dashed;
    border-color: #808080;
    border-radius: 5px;
+   cursor: pointer;
+}
+.remove-icon {
+   position: absolute;
+   color: white;
+   background: var(--color-error);
+   top: -3px;
+   right: 5px;
+   transform: rotate(90deg);
+   width: 14px;
+   height: 14px;
+   font-size: 9px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 50%;
+   font-weight: 600;
    cursor: pointer;
 }
 </style>
