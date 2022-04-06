@@ -20,5 +20,10 @@ export default [
       path: '/settings/general',
       name: 'general-settings',
       component: () => import('../views/pages/settings/general.vue')
+   },
+   {
+      path: '/settings/location',
+      name: 'location-settings',
+      component: () => import('../views/pages/settings/location.vue')
    }
 ]

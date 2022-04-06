@@ -23,7 +23,7 @@
 
             <!-- Locations -->
             <div class="col-md-4 mt-4">
-               <div class="settings-box h-100 border rounded">
+               <div @click="$router.push('/settings/location')" class="settings-box h-100 border rounded">
                   <div class="d-flex align-items-center">
                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M35 16.6665C35 28.3332 20 38.3332 20 38.3332C20 38.3332 5 28.3332 5 16.6665C5 12.6883 6.58035 8.87295 9.3934 6.0599C12.2064 3.24686 16.0218 1.6665 20 1.6665C23.9782 1.6665 27.7936 3.24686 30.6066 6.0599C33.4196 8.87295 35 12.6883 35 16.6665Z" stroke="#AAAAAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
