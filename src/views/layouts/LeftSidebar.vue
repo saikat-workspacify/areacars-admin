@@ -11,7 +11,7 @@ import LogoutIcon from '@/components/icons/LogoutIcon.vue'
    <aside class="left-sidebar">
       <!-- Logo -->
       <div class="app-logo">
-         <AppLogo />
+         <AppLogo @click="$router.push('/')" />
       </div>
 
       <ul class="menu-items">

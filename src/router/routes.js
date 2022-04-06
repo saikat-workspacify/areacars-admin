@@ -19,16 +19,21 @@ export default [
    {
       path: '/settings/general',
       name: 'general-settings',
-      component: () => import('../views/pages/settings/general.vue')
+      component: () => import('@/views/pages/settings/general.vue')
    },
    {
       path: '/settings/location',
       name: 'location-settings',
-      component: () => import('../views/pages/settings/location.vue')
+      component: () => import('@/views/pages/settings/location/index.vue')
+   },
+   {
+      path: '/settings/location/add',
+      name: 'add-location-settings',
+      component: () => import('@/views/pages/settings/location/add.vue')
    },
    {
       path: '/settings/vehicle-data',
       name: 'vehicle-data-settings',
-      component: () => import('../views/pages/settings/vehicle-data/index.vue')
+      component: () => import('@/views/pages/settings/vehicle-data/index.vue')
    }
 ]
