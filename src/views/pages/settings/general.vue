@@ -14,7 +14,7 @@ const form = reactive({
 <template>
    <default-layout>
       <BackButton label="Settings" />
-      <h5 class="mt-4">General</h5>
+      <h5 class="mt-4 mb-3">General</h5>
 
       <div class="row">
          <div class="col-md-6">
@@ -71,6 +71,11 @@ const form = reactive({
                <InputControl v-model="form.accountEmail" label="Country" class="mt-3" />
             </div>
          </div>
+      </div>
+
+      <div class="d-flex justify-content-end mb-3">
+         <button class="btn btn-light me-3">Cancle</button>
+         <button class="btn btn-primary">Save</button>
       </div>
    </default-layout>
 </template>
