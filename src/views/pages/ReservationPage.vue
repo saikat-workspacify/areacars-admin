@@ -137,7 +137,7 @@ const colors = [
    <default-layout>
       <!-- Upload reservation -->
       <div class="borderd-content">
-         <h5 class="mb-4">Upload reservation</h5>
+         <h5 class="mb-4">Upload Vehicle</h5>
 
          <div class="row">
             <div class="col-md-6">

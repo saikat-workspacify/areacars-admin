@@ -25,5 +25,10 @@ export default [
       path: '/settings/location',
       name: 'location-settings',
       component: () => import('../views/pages/settings/location.vue')
+   },
+   {
+      path: '/settings/vehicle-data',
+      name: 'vehicle-data-settings',
+      component: () => import('../views/pages/settings/vehicle-data/index.vue')
    }
 ]

@@ -145,8 +145,8 @@ export default defineComponent({
    top: -3px;
    right: 5px;
    transform: rotate(90deg);
-   width: 14px;
-   height: 14px;
+   width: 16px;
+   height: 16px;
    font-size: 9px;
    display: flex;
    justify-content: center;

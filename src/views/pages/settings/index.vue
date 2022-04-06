@@ -39,7 +39,7 @@
 
             <!-- Vehicles Data -->
             <div class="col-md-4 mt-4">
-               <div class="settings-box h-100 border rounded">
+               <div @click="$router.push('/settings/vehicle-data')" class="settings-box h-100 border rounded">
                   <div class="d-flex align-items-center">
                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 13.3335C28.2843 13.3335 35 11.0949 35 8.3335C35 5.57207 28.2843 3.3335 20 3.3335C11.7157 3.3335 5 5.57207 5 8.3335C5 11.0949 11.7157 13.3335 20 13.3335Z" stroke="#AAAAAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

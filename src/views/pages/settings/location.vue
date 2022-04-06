@@ -1,5 +1,30 @@
 <script setup>
+import { reactive } from 'vue'
 import BackButton from '@/components/buttons/BackButton.vue'
+import InputControl from '@/components/form/InputControl.vue'
+import SelectControl from '@/components/form/SelectControl.vue'
+
+const editForm = reactive({
+   storeName: '',
+   city: '',
+   zipcode: '',
+   street: '',
+   country: '',
+   phone: '',
+   email: '',
+})
+
+const contries = [
+   {
+      label: 'Germany',
+      value: 'Germany',
+   },
+   {
+      label: 'Bangladesh',
+      value: 'Bangladesh',
+   },
+]
+
 </script>
 
 <template>
@@ -72,7 +97,7 @@ import BackButton from '@/components/buttons/BackButton.vue'
             </div>
          </div>
 
-         <!-- Menu Icon -->
+         <!-- Menu Icon / Dropdown -->
          <div class="floating-menu-icon">
             <div class="dropdown">
                <div :id="`action_dropdown${i}`" data-bs-toggle="dropdown" aria-expanded="false" class="pointer">
@@ -85,16 +110,16 @@ import BackButton from '@/components/buttons/BackButton.vue'
 
                <ul class="dropdown-menu border-0 shadow" :aria-labelledby="`action_dropdown${i}`">
                   <li>
-                     <router-link to="/edit" class="dropdown-item py-2 pointer">
+                     <span data-bs-toggle="modal" data-bs-target="#location_edit_modal" class="dropdown-item py-2 pointer">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M11.333 2.00004C11.5081 1.82494 11.716 1.68605 11.9447 1.59129C12.1735 1.49653 12.4187 1.44775 12.6663 1.44775C12.914 1.44775 13.1592 1.49653 13.3879 1.59129C13.6167 1.68605 13.8246 1.82494 13.9997 2.00004C14.1748 2.17513 14.3137 2.383 14.4084 2.61178C14.5032 2.84055 14.552 3.08575 14.552 3.33337C14.552 3.58099 14.5032 3.82619 14.4084 4.05497C14.3137 4.28374 14.1748 4.49161 13.9997 4.66671L4.99967 13.6667L1.33301 14.6667L2.33301 11L11.333 2.00004Z" stroke="#B2B2B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
 
                         <span class="ms-3 text-14">Edit</span>
-                     </router-link>
+                     </span>
                   </li>
                   <li>
-                     <span class="dropdown-item py-2 pointer">
+                     <span data-bs-toggle="modal" data-bs-target="#location_remore_modal" class="dropdown-item py-2 pointer">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path d="M2 4H3.33333H14" stroke="#B2B2B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                            <path d="M5.33301 4.00016V2.66683C5.33301 2.31321 5.47348 1.97407 5.72353 1.72402C5.97358 1.47397 6.31272 1.3335 6.66634 1.3335H9.33301C9.68663 1.3335 10.0258 1.47397 10.2758 1.72402C10.5259 1.97407 10.6663 2.31321 10.6663 2.66683V4.00016M12.6663 4.00016V13.3335C12.6663 13.6871 12.5259 14.0263 12.2758 14.2763C12.0258 14.5264 11.6866 14.6668 11.333 14.6668H4.66634C4.31272 14.6668 3.97358 14.5264 3.72353 14.2763C3.47348 14.0263 3.33301 13.6871 3.33301 13.3335V4.00016H12.6663Z" stroke="#B2B2B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -108,9 +133,170 @@ import BackButton from '@/components/buttons/BackButton.vue'
 
          </div>
       </div>
+
+      <!-- Remove Modal -->
+      <div class="modal fade" id="location_remore_modal" tabindex="-1" aria-labelledby="location_remore_label" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="preview_image_remore_label">Remove Location</h5>
+               </div>
+               <div class="modal-body">
+                  Are you sure want to remove this location?
+               </div>
+               <div class="modal-footer border-0 mt-2">
+                  <button type="button" class="btn btn-light px-5 py-2 btn-sm " data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-danger px-5 py-2 btn-sm" data-bs-dismiss="modal">Remove</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Edit Modal -->
+      <div class="modal fade" id="location_edit_modal" tabindex="-1" aria-labelledby="location_edit_label" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="preview_image_remore_label">Edit Location</h5>
+               </div>
+               <div class="modal-body">
+                  <p>Shop Location Info</p>
+
+                  <InputControl v-model="editForm.storeName" label="Store Name" class="mt-3" />
+                  <InputControl v-model="editForm.street" label="Street" class="mt-3" />
+                  <InputControl v-model="editForm.zipcode" label="ZIP Code" class="mt-3" />
+                  <InputControl v-model="editForm.city" label="City" class="mt-3" />
+
+                  <SelectControl v-model="editForm.country" :options="contries" label="Country" class="mt-3" />
+
+                  <InputControl v-model="editForm.phone" label="Phone" type="tel" class="mt-3" />
+                  <InputControl v-model="editForm.email" label="Email" type="email" placeholder="example@mail.com" class="mt-3" />
+
+                  <div class="row mt-3">
+                     <div class="col-md-4">
+                        <p class="label">Opening Times</p>
+                     </div>
+                     <div class="col-md-8">
+                        <div class="row mt-3 align-items-center">
+                           <div class="col-4 text-muted">Montag</div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="10:00 AM">
+                           </div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="08:00 PM">
+                           </div>
+                           <div class="col-2 d-flex justify-content-end align-items-center">
+                              <div class="form-check form-switch">
+                                 <input class="form-check-input" type="checkbox" role="switch">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-3 align-items-center">
+                           <div class="col-4 text-muted">Dienstag</div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="10:00 AM">
+                           </div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="08:00 PM">
+                           </div>
+                           <div class="col-2 d-flex justify-content-end align-items-center">
+                              <div class="form-check form-switch">
+                                 <input class="form-check-input" type="checkbox" role="switch">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-3 align-items-center">
+                           <div class="col-4 text-muted">Mittwoch</div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="10:00 AM">
+                           </div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="08:00 PM">
+                           </div>
+                           <div class="col-2 d-flex justify-content-end align-items-center">
+                              <div class="form-check form-switch">
+                                 <input class="form-check-input" type="checkbox" role="switch">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-3 align-items-center">
+                           <div class="col-4 text-muted">Donnerstag</div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="10:00 AM">
+                           </div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="08:00 PM">
+                           </div>
+                           <div class="col-2 d-flex justify-content-end align-items-center">
+                              <div class="form-check form-switch">
+                                 <input class="form-check-input" type="checkbox" role="switch">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-3 align-items-center">
+                           <div class="col-4 text-muted">Freitag</div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="10:00 AM">
+                           </div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="08:00 PM">
+                           </div>
+                           <div class="col-2 d-flex justify-content-end align-items-center">
+                              <div class="form-check form-switch">
+                                 <input class="form-check-input" type="checkbox" role="switch">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-3 align-items-center">
+                           <div class="col-4 text-muted">Samstag</div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="10:00 AM">
+                           </div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="08:00 PM">
+                           </div>
+                           <div class="col-2 d-flex justify-content-end align-items-center">
+                              <div class="form-check form-switch">
+                                 <input class="form-check-input" type="checkbox" role="switch">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mt-3 align-items-center">
+                           <div class="col-4 text-muted">Sonntag</div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="10:00 AM">
+                           </div>
+                           <div class="col-3">
+                              <input type="text" class="form-control" placeholder="08:00 PM">
+                           </div>
+                           <div class="col-2 d-flex justify-content-end align-items-center">
+                              <div class="form-check form-switch">
+                                 <input class="form-check-input" type="checkbox" role="switch">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer border-0 mt-2">
+                  <button type="button" class="btn btn-light px-5 py-2 btn-sm " data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary px-5 py-2 btn-sm" data-bs-dismiss="modal">Save</button>
+               </div>
+            </div>
+         </div>
+      </div>
    </default-layout>
 </template>
 
+<style lang="scss">
+#location_edit_modal {
+   @media (min-width: 1200px) {
+      .modal-dialog {
+         max-width: 720px !important;
+      }
+   }
+}
+</style>
 
 <style lang="scss" scoped>
 .floating-menu-icon {
