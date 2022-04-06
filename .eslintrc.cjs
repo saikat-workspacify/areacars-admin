@@ -11,14 +11,4 @@ module.exports = {
    "rules": {
       "vue/multi-word-component-names": "off"
    },
-   "overrides": [
-      {
-         "files": [
-            "cypress/integration/**.spec.{js,ts,jsx,tsx}"
-         ],
-         "extends": [
-            "plugin:cypress/recommended"
-         ]
-      }
-   ]
 }
