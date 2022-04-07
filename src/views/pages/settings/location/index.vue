@@ -277,6 +277,16 @@ const contries = [
                         </div>
                      </div>
                   </div>
+
+                  <div class="row mt-3">
+                     <div class="col-md-4">
+                        <p class="label">Upload Image</p>
+                     </div>
+                     <div class="col-md-8">
+                        <button class="btn btn-outline-primary">Upload File</button>
+                     </div>
+                  </div>
+
                </div>
                <div class="modal-footer border-0 mt-2">
                   <button type="button" class="btn btn-light px-5 py-2 btn-sm " data-bs-dismiss="modal">Cancel</button>
