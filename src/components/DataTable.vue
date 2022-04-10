@@ -47,11 +47,9 @@ const getColName = col => {
          <div class="table-row header">
             <!-- Table Cell -->
             <div v-for="(col, i) in props.fields" :key="i" :class="col.thClass" class="table-cell">
-               <div class="cell-field">
-                  <slot :name="`th-${getColName(col)}`">
-                     {{ getTh(col) }}
-                  </slot>
-               </div>
+               <slot :name="`th-${getColName(col)}`" :col="col">
+                  {{ getTh(col) }}
+               </slot>
             </div>
 
          </div>
@@ -93,10 +91,8 @@ const getColName = col => {
 .settings-table {
    .table-row.header {
       .table-cell {
-         .cell-field {
-            padding: 10px 20px;
-            background-color: #f6f7fb;
-         }
+         padding: 10px 20px;
+         background-color: #f6f7fb;
       }
    }
 
