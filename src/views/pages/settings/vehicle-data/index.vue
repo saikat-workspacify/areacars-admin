@@ -79,14 +79,6 @@ changeTab(1)
             <button v-for="(item, i) in vehicleData" :key="i" @click="changeTab(item.id)" :class="`${item.id == activeTab.id ? 'btn-primary' : 'btn-light'}`" class="btn text-nowrap px-2">
                {{ item.name }}
             </button>
-            <!-- <button class="btn btn-light text-nowrap px-2">Category</button>
-            <button class="btn btn-light text-nowrap px-2">Manufacturer</button>
-            <button class="btn btn-light text-nowrap px-2">Gearbox</button>
-            <button class="btn btn-light text-nowrap px-2">Exterior color</button>
-            <button class="btn btn-light text-nowrap px-2">Exterior color</button>
-            <button class="btn btn-light text-nowrap px-2">Interior material</button>
-            <button class="btn btn-light text-nowrap px-2">Upholstery color</button>
-            <button class="btn btn-light text-nowrap px-2">Fuel</button> -->
          </div>
 
          <component :is="activeTab.component" />
