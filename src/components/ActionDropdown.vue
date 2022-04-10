@@ -4,7 +4,7 @@ const randomId = `action_dropdown${_.random(100)}${_.random(100)}`
 </script>
 
 <template>
-   <div class="dropdown dropend d-inline-block">
+   <div class="dropdown d-inline-block">
       <div :id="randomId" data-bs-toggle="dropdown" aria-expanded="false" class="pointer">
          <slot name="action-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
