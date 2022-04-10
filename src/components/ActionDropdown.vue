@@ -1,5 +1,9 @@
 <script setup>
+// import bootstrap  from 'bootstrap.esm.js'
 import _ from 'lodash'
+
+// const ddEl = bootstrap.Dropdown()
+
 const randomId = `action_dropdown${_.random(100)}${_.random(100)}`
 </script>
 

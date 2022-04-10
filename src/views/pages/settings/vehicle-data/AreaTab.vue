@@ -1,6 +1,7 @@
 <script setup>
 import DataTable from '@/components/DataTable.vue'
 import ActionDropdown from '@/components/ActionDropdown.vue'
+import ConfirmDialog from '@/components/modals/ConfirmDialog.vue'
 
 const tabledata = [
    {
@@ -69,8 +70,9 @@ const fields = [
       </DataTable>
    </div>
 
-   <!-- Remove Modal -->
-   <div class="modal fade" id="area_remore_modal" tabindex="-1" aria-labelledby="location_remore_label" aria-hidden="true">
+   <!-- Remove Area Modal -->
+   <ConfirmDialog></ConfirmDialog>
+   <!-- <div class="modal fade" id="area_remore_modal" tabindex="-1" aria-labelledby="location_remore_label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
             <div class="modal-header">
@@ -85,7 +87,7 @@ const fields = [
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
 </template>
 
 
